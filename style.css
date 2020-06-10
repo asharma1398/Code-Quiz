@@ -15,3 +15,7 @@ main #startButton {
 .hide {
    display: none;
 }
+
+#answerChoices {
+    text-align: center;
+}

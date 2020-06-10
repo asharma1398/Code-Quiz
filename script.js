@@ -10,6 +10,7 @@ var timeLeft = document.querySelector("#timeLeft");
 var secondsLeft = 100; 
 
 var quizQuestionIndex = -1;
+var index = 0;
 
 
 // quiz questions, options, and answers 
@@ -21,7 +22,7 @@ var quizDetails = [
         choiceB: "<js>",
         choiceC: "<scripting>",
         choiceD: "<javascript>", 
-        correctAns: "A",
+        correctAns: "<script>",
     },
 
     {
@@ -31,7 +32,7 @@ var quizDetails = [
         choiceB: "function myFunction()",
         choiceC: "function:myFunction()",
         choiceD: "None of the above", 
-        correctAns: "B",
+        correctAns: "function myFunction()",
     },
 
     {
@@ -41,7 +42,7 @@ var quizDetails = [
         choiceB: "if i == 5 then",
         choiceC: "if i = 5",
         choiceD: "if (i == 5)", 
-        correctAns: "D",
+        correctAns: "if (i == 5)",
     },
 
     {
@@ -51,7 +52,7 @@ var quizDetails = [
         choiceB: "for (i = 0; i <= 5; i++)",
         choiceC: "for i = 1 to 5",
         choiceD: "for (i <= 5; i++)", 
-        correctAns: "B",
+        correctAns: "for (i = 0; i <= 5; i++)",
     },
 
     {
@@ -61,34 +62,100 @@ var quizDetails = [
         choiceB: "rnd(7.25)",
         choiceC: "Math.round(7.25)",
         choiceD: "Math.rnd(7.25)", 
-        correctAns: "C",
+        correctAns: "Math.round(7.25)",
     },
 
 ]
 
 // timer starts when start button is clicked
 function runTimer () {
-    console.log("started quiz");
+    
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timeLeft.textContent = secondsLeft;
     
-        // if(secondsLeft === 0) {
-        // call another function?  
-        // }
+        if(secondsLeft <= 0) {
+            // stops timer
+            clearInterval(timerInterval);
+            // hide h1, p, and startButton 
+            document.querySelector("h1").style.display = "block";
+            document.querySelector("p").style.display = "block";
+            document.querySelector("button").style.display = "none";
+            
+            document.querySelector("h1").textContent = "done!";
+            document.querySelector("p").textContent = "quiz is over"
+            
+            runUserForm();
+        }
     
     }, 1000);
 
     // hide h1, p, and startButton 
-
     document.querySelector("h1").style.display = "none";
     document.querySelector("p").style.display = "none";
     document.querySelector("button").style.display = "none";
 
     // show question and answerchoices 
     document.querySelector("ol").style.display = "block";
+
+    // call function to display quiz content
+    runQuizContent();
 }
+
 // questions appear on page 
+
+function runQuizContent () {
+    console.log("hello");
+    document.querySelector("p").style.display = "block";
+    document.querySelector("p").textContent = quizDetails[index].question;
+
+    document.querySelector("#startButton").style.display = "none";
+
+    document.querySelector("#button1").style.display = "block";
+    document.querySelector("#button2").style.display = "block";
+    document.querySelector("#button3").style.display = "block";
+    document.querySelector("#button4").style.display = "block";
+
+    document.querySelector("#button1").textContent = quizDetails[index].choiceA;
+    document.querySelector("#button2").textContent = quizDetails[index].choiceB;
+    document.querySelector("#button3").textContent = quizDetails[index].choiceC;
+    document.querySelector("#button4").textContent = quizDetails[index].choiceD;
+
+    document.querySelector("#button1").addEventListener("click", runCheckAnswer)
+    document.querySelector("#button2").addEventListener("click", runCheckAnswer)
+    document.querySelector("#button3").addEventListener("click", runCheckAnswer)
+    document.querySelector("#button4").addEventListener("click", runCheckAnswer)
+    
+}
+
+function runCheckAnswer () {
+
+    console.log("hi")
+    console.log(event.target.textContent)
+
+    if (event.target.textContent !== quizDetails[index].correctAns) {
+        console.log("wrong");
+        secondsLeft -= 10;
+    } else {
+        console.log("right");
+    }
+
+    if (index < quizDetails.length - 1) {
+        index++;
+        runQuizContent();
+    } else {
+        runUserForm();
+    }
+    
+}
+
+function runUserForm() {
+
+    var userInitials = document.createElement("input"); 
+    document.body.appendChild(userInitials);
+
+}
+
 // if wrong anwer is picked then decrease the time but 10 seconds 
 // end page when timer stops or all questions answered 
 // show user their score and section to input username 
