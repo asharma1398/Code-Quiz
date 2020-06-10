@@ -21,7 +21,7 @@
             <a href="#">View Scoreboard</a>
             
             <!-- timer display -->
-            <p>Time: <span id="secondsLeft">100</span></p>
+            <span>Time: <span id="timeLeft">100</span></span>
             
         </nav>
         
@@ -31,13 +31,15 @@
         <section class = "container">
             <!-- start page -->
             <h1>Coding Quiz Challenge</h1>
+
             <p>Try to answer the following 5 code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score / time by 10 seconds. Good luck!</p>
+
             <button id="startButton">Start Quiz</button>
         </section>
 
         <section>
-            <!-- question selection -->
-            <ol class="hide">
+            <!-- question answer selection -->
+            <ol id="answerChoices" class="hide">
                 <li><button id="button1">option</button></li>
                 <li><button id="button2">option</button></li>
                 <li><button id="button3">option</button></li>
@@ -50,7 +52,7 @@
     </main>
     
     <!-- link to JavaScript -->
-    <script type="type/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
 
 </body>
 </html>
