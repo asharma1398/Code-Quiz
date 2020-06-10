@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    
+    <!-- link to CSS -->
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+
+    <!-- navigation bar  -->
+    <header> 
+       
+        <nav class = "container" >
+            
+            <!-- link to scores page -->
+            <a href="#">View Scoreboard</a>
+            
+            <!-- timer display -->
+            <p>Time: <span id="secondsLeft">100</span></p>
+            
+        </nav>
+        
+    </header>
+
+    <main>
+        <section class = "container">
+            <!-- start page -->
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following 5 code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score / time by 10 seconds. Good luck!</p>
+            <button id="startButton">Start Quiz</button>
+        </section>
+
+        <section>
+            <!-- question selection -->
+            <ol class="hide">
+                <li><button id="button1">option</button></li>
+                <li><button id="button2">option</button></li>
+                <li><button id="button3">option</button></li>
+                <li><button id="button4">option</button></li>
+            </ol>
+            
+
+        </section>
+
+    </main>
+    
+    <!-- link to JavaScript -->
+    <script type="type/javascript" src="./script.js"></script>
+
+</body>
+</html>

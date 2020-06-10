@@ -1,0 +1,17 @@
+header .container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+main .container {
+    text-align: center;
+}
+
+main #startButton {
+    font-size: 16px;
+}
+
+.hide {
+   display: none;
+}
