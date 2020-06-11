@@ -20,9 +20,7 @@ main #startButton {
     text-align: center;
 }
 
-#submitButton {
-    display: none;
- }
+
 
 #initialForm {
     display: none;
