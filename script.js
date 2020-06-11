@@ -73,19 +73,32 @@ function runTimer () {
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timeLeft.textContent = secondsLeft;
-    
+        
         if(secondsLeft <= 0) {
             // stops timer
             clearInterval(timerInterval);
-            // hide h1, p, and startButton 
+            // hide h1, p, and buttons 
             document.querySelector("h1").style.display = "block";
             document.querySelector("p").style.display = "block";
             document.querySelector("button").style.display = "none";
+
+            document.querySelector("#answerChoices").style.display = "none";
+            document.querySelector("#button1").style.display = "none";
+            document.querySelector("#button2").style.display = "none";
+            document.querySelector("#button3").style.display = "none";
+            document.querySelector("#button4").style.display = "none";
             
             document.querySelector("h1").textContent = "done!";
-            document.querySelector("p").textContent = "quiz is over"
+            document.querySelector("p").textContent = "You score is " + secondsLeft+ ". Enter initials";
             
             runUserForm();
+        }
+
+        if((index == quizDetails.length)) {
+            console.log("this happened")
+            clearInterval(timerInterval);
+            runUserForm();
+            console.log("they are equal")
         }
     
     }, 1000);
@@ -143,7 +156,9 @@ function runCheckAnswer () {
     if (index < quizDetails.length - 1) {
         index++;
         runQuizContent();
-    } else {
+    } 
+    else {
+        
         runUserForm();
     }
     
@@ -151,8 +166,24 @@ function runCheckAnswer () {
 
 function runUserForm() {
 
+    // hide h1, p, and buttons 
+    document.querySelector("h1").style.display = "block";
+    document.querySelector("p").style.display = "block";
+    document.querySelector("button").style.display = "none";
+
+    document.querySelector("#answerChoices").style.display = "none";
+    document.querySelector("#button1").style.display = "none";
+    document.querySelector("#button2").style.display = "none";
+    document.querySelector("#button3").style.display = "none";
+    document.querySelector("#button4").style.display = "none";
+    
+    document.querySelector("h1").textContent = "done!";
+    document.querySelector("p").textContent = "You score is " + secondsLeft+ ". Enter initials";
+    
     var userInitials = document.createElement("input"); 
     document.body.appendChild(userInitials);
+
+    document.querySelector("#submitButton").style.display = "block";
 
 }
 

@@ -19,3 +19,7 @@ main #startButton {
 #answerChoices {
     text-align: center;
 }
+
+#submitButton {
+    display: none;
+ }
