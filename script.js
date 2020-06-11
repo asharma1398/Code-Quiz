@@ -171,6 +171,9 @@ function runUserForm() {
     document.querySelector("p").style.display = "block";
     document.querySelector("button").style.display = "none";
 
+    // remove time on "quiz over page"
+    document.querySelector("#timeDisplay").style.display = "none";
+
     document.querySelector("#answerChoices").style.display = "none";
     document.querySelector("#button1").style.display = "none";
     document.querySelector("#button2").style.display = "none";
@@ -178,17 +181,11 @@ function runUserForm() {
     document.querySelector("#button4").style.display = "none";
     
     document.querySelector("h1").textContent = "done!";
-    document.querySelector("p").textContent = "You score is " + secondsLeft+ ". Enter initials";
-    
-    var userInitials = document.createElement("input"); 
-    document.body.appendChild(userInitials);
+    document.querySelector("p").textContent = "You score is " + secondsLeft;
 
-    document.querySelector("#submitButton").style.display = "block";
-
+    document.querySelector("#initialForm").style.display = "block";
 }
 
-// if wrong anwer is picked then decrease the time but 10 seconds 
-// end page when timer stops or all questions answered 
-// show user their score and section to input username 
 
+// click quiz start button and timer will run
 startButton.addEventListener("click", runTimer);

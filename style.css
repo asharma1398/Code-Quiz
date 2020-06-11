@@ -23,3 +23,8 @@ main #startButton {
 #submitButton {
     display: none;
  }
+
+#initialForm {
+    display: none;
+    text-align: center;
+}
