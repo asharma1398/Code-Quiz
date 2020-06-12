@@ -102,6 +102,7 @@ function runTimer () {
     document.querySelector("#scoresPage").style.display = "none";
     document.querySelector("#donePage").style.display = "none";
 
+
     // call function to display quiz content
     runQuizContent();
 }
@@ -187,6 +188,7 @@ function runScoreSaver() {
 function runScoreBoard() {
 
     document.querySelector("#timeDisplay").style.display = "none";
+    
 
     document.querySelector("#mainPage").style.display = "none";
     document.querySelector("#quizPage").style.display = "none";
@@ -200,4 +202,22 @@ function runScoreBoard() {
 
 // when score submit button is clicked 
 submitScoreButton.addEventListener("click", runScoreSaver)
+
+function runMainPage() {
+    document.querySelector("#mainPage").style.display = "block";
+    document.querySelector("#timeDisplay").style.display = "block";
+
+    document.querySelector("#quizPage").style.display = "none";
+    document.querySelector("#scoresPage").style.display = "none";
+    document.querySelector("#donePage").style.display = "none";
+
+
+}
+
+// when back to home button is clicked 
+var homeButton = document.querySelector("#backToHome")
+
+homeButton.addEventListener("click", runMainPage)
+
+
 
