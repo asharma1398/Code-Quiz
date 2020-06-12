@@ -197,15 +197,6 @@ function runScoreBoard() {
 
     var scores = JSON.parse(localStorage.getItem("submission"));
     console.log(scores)
-    // console.log(enteredScores)
-
-    // document.querySelector("#scoreContent").textContent = scores[0];
-    
-    var scoreList = document.createElement("li");
-
-    scoreList.textContent = scores[1];
-
-    document.getElementById("scoreContent").appendChild(scoreList);
 
 }
 
