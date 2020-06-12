@@ -186,38 +186,32 @@ function runScoreSaver() {
 }
 
 function runScoreBoard() {
-
+    // stop the timer 
     document.querySelector("#timeDisplay").style.display = "none";
     
-
+    // display just the Scoreboard page
     document.querySelector("#mainPage").style.display = "none";
     document.querySelector("#quizPage").style.display = "none";
     document.querySelector("#scoresPage").style.display = "block";
     document.querySelector("#donePage").style.display = "none";
 
     var scores = JSON.parse(localStorage.getItem("submission"));
-    // console.log(scores)
+    console.log(scores)
+    // console.log(enteredScores)
+
+    // document.querySelector("#scoreContent").textContent = scores[0];
+    
+    var scoreList = document.createElement("li");
+
+    scoreList.textContent = scores[1];
+
+    document.getElementById("scoreContent").appendChild(scoreList);
 
 }
 
 // when score submit button is clicked 
 submitScoreButton.addEventListener("click", runScoreSaver)
 
-function runMainPage() {
-    document.querySelector("#mainPage").style.display = "block";
-    document.querySelector("#timeDisplay").style.display = "block";
-
-    document.querySelector("#quizPage").style.display = "none";
-    document.querySelector("#scoresPage").style.display = "none";
-    document.querySelector("#donePage").style.display = "none";
-
-
-}
-
-// when back to home button is clicked 
-var homeButton = document.querySelector("#backToHome")
-
-homeButton.addEventListener("click", runMainPage)
 
 
 

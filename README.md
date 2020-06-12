@@ -11,7 +11,7 @@ Status: Work in Progress
 
 For this project, I created a timed JavaScript Quiz that takes the user through an assessment and finishes with a submission to the scoreboard page. 
 
-This application featured dynamically updated HTML and CSS, powered by JavaScript Code. 
+This application features dynamically updated HTML and CSS, powered by JavaScript Code. 
 
 ### Contributors 
 ***
