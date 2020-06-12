@@ -21,3 +21,4 @@ Quiz Questions were supplied by [W3 Schools](https://www.w3schools.com/quiztest/
 
 ### Preview 
 ***
+![quiz_preview](./quiz_preview.gif)
