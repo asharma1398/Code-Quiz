@@ -1,17 +1,16 @@
 // buttons
 var startButton = document.querySelector("#startButton");
-
 var choiceA = document.querySelector("#button1");
 var choiceB = document.querySelector("#button2");
 var choiceC = document.querySelector("#button3");
 var choiceD = document.querySelector("#button4");
 
+// time variables 
 var timeLeft = document.querySelector("#timeLeft");
 var secondsLeft = 100; 
 
-var quizQuestionIndex = -1;
+// question index initilized
 var index = 0;
-
 
 // quiz questions, options, and answers 
 var quizDetails = [
@@ -67,7 +66,7 @@ var quizDetails = [
 
 ]
 
-// timer starts when start button is clicked
+// time function 
 function runTimer () {
     
     var timerInterval = setInterval(function() {
@@ -77,57 +76,45 @@ function runTimer () {
         if(secondsLeft <= 0) {
             // stops timer
             clearInterval(timerInterval);
-            // hide h1, p, and buttons 
-            document.querySelector("h1").style.display = "block";
-            document.querySelector("p").style.display = "block";
-            document.querySelector("button").style.display = "none";
-
-            document.querySelector("#answerChoices").style.display = "none";
-            document.querySelector("#button1").style.display = "none";
-            document.querySelector("#button2").style.display = "none";
-            document.querySelector("#button3").style.display = "none";
-            document.querySelector("#button4").style.display = "none";
             
-            document.querySelector("h1").textContent = "done!";
+            document.querySelector("#mainPage").style.display = "none";
+            document.querySelector("#quizPage").style.display = "none";
+            document.querySelector("#scoresPage").style.display = "none";
+            document.querySelector("#donePage").style.display = "block";
+
             document.querySelector("p").textContent = "You score is " + secondsLeft+ ". Enter initials";
             
             runUserForm();
         }
 
         if((index == quizDetails.length)) {
-            console.log("this happened")
+            
             clearInterval(timerInterval);
             runUserForm();
-            console.log("they are equal")
+            
         }
     
     }, 1000);
 
-    // hide h1, p, and startButton 
-    document.querySelector("h1").style.display = "none";
-    document.querySelector("p").style.display = "none";
-    document.querySelector("button").style.display = "none";
 
-    // show question and answerchoices 
-    document.querySelector("ol").style.display = "block";
+    document.querySelector("#mainPage").style.display = "none";
+    document.querySelector("#quizPage").style.display = "block";
+    document.querySelector("#scoresPage").style.display = "none";
+    document.querySelector("#donePage").style.display = "none";
 
     // call function to display quiz content
     runQuizContent();
 }
 
-// questions appear on page 
+function runQuizContent() {
 
-function runQuizContent () {
-    console.log("hello");
-    document.querySelector("p").style.display = "block";
-    document.querySelector("p").textContent = quizDetails[index].question;
+    document.querySelector("#questions").style.display = "block";
+    document.querySelector("#questions").textContent = quizDetails[index].question;
 
-    document.querySelector("#startButton").style.display = "none";
-
-    document.querySelector("#button1").style.display = "block";
-    document.querySelector("#button2").style.display = "block";
-    document.querySelector("#button3").style.display = "block";
-    document.querySelector("#button4").style.display = "block";
+    document.querySelector("#mainPage").style.display = "none";
+    document.querySelector("#quizPage").style.display = "block";
+    document.querySelector("#scoresPage").style.display = "none";
+    document.querySelector("#donePage").style.display = "none";
 
     document.querySelector("#button1").textContent = quizDetails[index].choiceA;
     document.querySelector("#button2").textContent = quizDetails[index].choiceB;
@@ -138,19 +125,18 @@ function runQuizContent () {
     document.querySelector("#button2").addEventListener("click", runCheckAnswer)
     document.querySelector("#button3").addEventListener("click", runCheckAnswer)
     document.querySelector("#button4").addEventListener("click", runCheckAnswer)
-    
 }
 
 function runCheckAnswer () {
 
-    console.log("hi")
-    console.log(event.target.textContent)
+    
+    
 
     if (event.target.textContent !== quizDetails[index].correctAns) {
-        console.log("wrong");
+        
         secondsLeft -= 10;
     } else {
-        console.log("right");
+        
     }
 
     if (index < quizDetails.length - 1) {
@@ -166,26 +152,52 @@ function runCheckAnswer () {
 
 function runUserForm() {
 
-    // hide h1, p, and buttons 
-    document.querySelector("h1").style.display = "block";
-    document.querySelector("p").style.display = "block";
-    document.querySelector("button").style.display = "none";
+    document.querySelector("#mainPage").style.display = "none";
+    document.querySelector("#quizPage").style.display = "none";
+    document.querySelector("#scoresPage").style.display = "none";
+    document.querySelector("#donePage").style.display = "block";
 
     // remove time on "quiz over page"
     document.querySelector("#timeDisplay").style.display = "none";
-
-    document.querySelector("#answerChoices").style.display = "none";
-    document.querySelector("#button1").style.display = "none";
-    document.querySelector("#button2").style.display = "none";
-    document.querySelector("#button3").style.display = "none";
-    document.querySelector("#button4").style.display = "none";
     
-    document.querySelector("h1").textContent = "done!";
-    document.querySelector("p").textContent = "You score is " + secondsLeft;
+    document.querySelector("#doneHeader").textContent = "done!";
+    document.querySelector("#doneContent").textContent = "You score is " + secondsLeft;
 
-    document.querySelector("#initialForm").style.display = "block";
 }
 
+// when start button is clicked 
+startButton.addEventListener("click", runTimer)
 
-// click quiz start button and timer will run
-startButton.addEventListener("click", runTimer);
+var submitScoreButton = document.querySelector("#submitScore");
+var initialsInput = document.querySelector("#initials");
+var enteredScores = [];
+
+function runScoreSaver() {
+    event.preventDefault();
+
+    var initialsSubmit = document.querySelector("#initials").value; 
+    
+    enteredScores.push({initial: initialsSubmit, Score: secondsLeft})
+
+    localStorage.setItem("submission", JSON.stringify(enteredScores))
+
+    runScoreBoard();
+}
+
+function runScoreBoard() {
+
+    document.querySelector("#timeDisplay").style.display = "none";
+
+    document.querySelector("#mainPage").style.display = "none";
+    document.querySelector("#quizPage").style.display = "none";
+    document.querySelector("#scoresPage").style.display = "block";
+    document.querySelector("#donePage").style.display = "none";
+
+    var scores = JSON.parse(localStorage.getItem("submission"));
+    // console.log(scores)
+
+}
+
+// when score submit button is clicked 
+submitScoreButton.addEventListener("click", runScoreSaver)
+

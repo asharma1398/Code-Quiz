@@ -1,69 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quiz</title>
-    
+    <title>JavaScript Quiz</title>
+
     <!-- link to CSS -->
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
-
 <body>
+    
+    <!-- navigation bar -->
 
-    <!-- navigation bar  -->
-    <header> 
-       
-        <nav class = "container" >
-            
+    <header>
+        <nav id="container">
+
             <!-- link to scores page -->
             <a href="#">View Scoreboard</a>
             
             <!-- timer display -->
             <span id="timeDisplay">Time: <span id="timeLeft">100</span></span>
-            
         </nav>
-        
     </header>
 
-    <main>
-        <section class = "container">
-            <!-- start page -->
-            <h1 id="pageTitle">Coding Quiz Challenge</h1>
+    <!-- contents on various pages -->
 
-            <p id="pageContent">Try to answer the following 5 code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score / time by 10 seconds. Good luck!</p>
+    <main>
+
+        <!-- main page -->
+        <section id="mainPage">
+
+            <h1 id="mainPageTitle">Coding Quiz Challenge</h1>
+
+            <p id="mainPageContent">Try to answer the following 5 code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score / time by 10 seconds. Good luck!</p>
 
             <button id="startButton">Start Quiz</button>
         </section>
 
-        <section>
-            <!-- question answer selection -->
+        <!-- quiz page -->
+        <section id="quizPage">
+
+            <p id="questions"></p>
             <ol id="answerChoices" class="hide">
                 <li><button id="button1">option</button></li>
                 <li><button id="button2">option</button></li>
                 <li><button id="button3">option</button></li>
                 <li><button id="button4">option</button></li>
             </ol>
-            
 
         </section>
 
-        <section id="initialForm">
+        <!-- done page -->
+        <section id="donePage">
+            <h1 id="doneHeader"></h1>
+            <p id="doneContent"></p>
 
-            <form>
-                <label for="fname">Enter Initials:</label>
-                <input type="text" id="intialsEntered"><br><br> 
+            <form method="POST">
+                <div class="input-group">
+                  <label for="initials">Enter Intials: </label>
+                  <input type="text" name="initials" id="initials"/>
+                </div>
+                <br>
+                <div id="msg"></div>
             </form>
-        
-            <button id="submitButton"><a href="scores.html">Submit</a></button>
+
+            <button id="submitScore">Submit Score</button>
 
         </section>
-        
-        
+
+
+        <!-- scores page -->
+        <section id="scoresPage">
+            <h1>Scoreboard</h1>
+            <ul id="scoreContent"></ul>
+            <button id="backToHome">Back to Home Page</button>
+        </section>
 
     </main>
-    
+
     <!-- link to JavaScript -->
     <script type="text/javascript" src="./script.js"></script>
 

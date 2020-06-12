@@ -1,28 +1,20 @@
-header .container {
+#container {
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
 }
 
-main .container {
+#mainPage {
     text-align: center;
 }
 
-main #startButton {
-    font-size: 16px;
-}
-
-.hide {
-   display: none;
-}
-
-#answerChoices {
-    text-align: center;
-}
-
-
-
-#initialForm {
+#quizPage {
     display: none;
-    text-align: center;
+}
+
+#donePage {
+    display: none;
+}
+
+#scoresPage {
+    display: none;
 }
